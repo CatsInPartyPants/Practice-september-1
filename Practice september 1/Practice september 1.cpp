@@ -76,7 +76,20 @@ int& f9(int* a, int s)
 	return arr[0];
 }
 
+int sizeArr()
+{
+	srand(time(NULL));
+	return rand() % 5 + 5;
+}
 
+void showArr(int* arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
 
 int main()
 {
@@ -158,10 +171,33 @@ int main()
 	//cout << f9(arr, 5) << " " << *(&f9(arr, 5)+1);
 
 	// constants
-	int a = 7;
-	const int* pa = &a;
-	int b = 0;
-	pa = &b;
+	//int a = 7;
+	//const int* pa = &a; //указатель не может менять значение, которое хранится в переменной а
+	//int* const pa = &a; // указатель не может менять свое значение
+	//int b = 0;
+	//pa = &b;
+
+	// динамический массив
+
+	int size = sizeArr();
+	int* arr = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = rand() % 10;
+	}
+
+	showArr(arr, size);
+	
+	delete[] arr;
+	
+	arr = new int[3];
+	for (int i = 0; i < 3; i++)
+	{
+		arr[i] = rand() % 10;
+	}
+	showArr(arr, 3);
+
+
 }
 
 int& arrayFill(int index)
