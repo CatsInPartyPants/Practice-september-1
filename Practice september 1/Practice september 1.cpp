@@ -94,6 +94,7 @@ void showArr(int* arr, int size)
 void f10(int* arr, int size)
 {
 	int minus_count = 0, new_size;
+	// узнаем размер нового массива, только положительные числа
 	for (int i = 0; i < size; i++)
 	{
 		if (arr[i] < 0)
@@ -103,21 +104,26 @@ void f10(int* arr, int size)
 	}
 	new_size = size - minus_count;
 
+	// выделяем память под новый массив
 	int* new_arr = new int[new_size];
 
+	// заносим в новый массив элементы, которые больше 0
 	for (int i = 0, j = 0; i < size; i++)
 	{
-		if (arr[i] > 0)
+		if (arr[i] >= 0)
 		{
 			new_arr[j] = arr[i];
 			j++;
 		}
 	}
 
+	//выводим получившийся массив
 	for (int i = 0; i < new_size; i++)
 	{
 		cout << new_arr[i] << " ";
 	}
+
+	//освобождаем память
 	delete[] new_arr;
 }
 
@@ -229,7 +235,7 @@ int main()
 	showArr(arr, 3);
 	*/
 
-	int* arr = new int[10]{ 5,-7,3,4,-9, 10, 11, 100, -1, 5 };
+	int* arr = new int[12]{ 5, 0,-7,3,4,-9, 10, 0, 11, 100, -1, 5 };
 	f10(arr, 10);
 
 	delete[] arr;
