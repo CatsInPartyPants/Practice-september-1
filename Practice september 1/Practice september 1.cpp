@@ -91,6 +91,36 @@ void showArr(int* arr, int size)
 	cout << endl;
 }
 
+void f10(int* arr, int size)
+{
+	int minus_count = 0, new_size;
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] < 0)
+		{
+			minus_count++;
+		}
+	}
+	new_size = size - minus_count;
+
+	int* new_arr = new int[new_size];
+
+	for (int i = 0, j = 0; i < size; i++)
+	{
+		if (arr[i] > 0)
+		{
+			new_arr[j] = arr[i];
+			j++;
+		}
+	}
+
+	for (int i = 0; i < new_size; i++)
+	{
+		cout << new_arr[i] << " ";
+	}
+	delete[] new_arr;
+}
+
 int main()
 {
 	// task 1
@@ -179,6 +209,7 @@ int main()
 
 	// динамический массив
 
+	/*
 	int size = sizeArr();
 	int* arr = new int[size];
 	for (int i = 0; i < size; i++)
@@ -196,6 +227,12 @@ int main()
 		arr[i] = rand() % 10;
 	}
 	showArr(arr, 3);
+	*/
+
+	int* arr = new int[10]{ 5,-7,3,4,-9, 10, 11, 100, -1, 5 };
+	f10(arr, 10);
+
+	delete[] arr;
 
 
 }
